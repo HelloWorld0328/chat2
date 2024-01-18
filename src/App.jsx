@@ -37,6 +37,8 @@ const uploadComment = async () => {
     .then(response => response.json())
     .then(data => {
         console.log('서버로부터의 응답:', data);
+        document.getElementById('nameInput').value = '';
+        document.getElementById('contentInput').value = '';
     })
     .catch(error => {
         console.error('오류 발생:', error);
