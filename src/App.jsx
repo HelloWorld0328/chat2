@@ -2,11 +2,12 @@ import React, { useState , useEffect} from "react";
 
 const App = () => {
   const [comment,SetComment] = useState([])
+  const server ="https://chat2-backend.onrender.com/"
 
   useEffect(() => {
     const fetchData = async () => {
         try {
-            const response = await fetch('http://localhost:8000');
+            const response = await fetch(server);
             const data = await response.json();
             SetComment(data);
         } catch (error) {
@@ -26,7 +27,7 @@ const uploadComment = async () => {
     const nameI = document.getElementById('nameInput').value;
     const contentI = document.getElementById('contentInput').value;
 
-    fetch('http://localhost:8000', {
+    fetch(server, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
