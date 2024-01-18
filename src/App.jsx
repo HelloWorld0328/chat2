@@ -27,6 +27,13 @@ const uploadComment = async () => {
     const nameI = document.getElementById('nameInput').value;
     const contentI = document.getElementById('contentInput').value;
 
+    if (nameI===""){
+      alert("이름을 입력 해주세요.")
+    }
+    else if(contentI===""){
+      alert("내용을 입력 해주세요.")
+    }
+    else{
     fetch(server, {
         method: 'POST',
         headers: {
@@ -43,7 +50,7 @@ const uploadComment = async () => {
     .catch(error => {
         console.error('오류 발생:', error);
     });
-}
+}}
   return(
     <div id="app" style={{
       textAlign: "center",
@@ -55,8 +62,8 @@ const uploadComment = async () => {
         ))}
       </div> <br /><br /><br />
       <div id="writeComment">
-        <input type="text" placeholder="이름" name="name" id="nameInput"/><br /><br />
-        <textarea id="contentInput" name="content" cols="22" rows="3" placeholder="내용"></textarea><br /><br />
+        <input type="text" placeholder="이름" name="name" id="nameInput" autoComplete="false"/><br /><br />
+        <textarea id="contentInput" name="content" cols="22" rows="3" placeholder="내용" autoComplete="false"></textarea><br /><br />
         <button id="uploadComment" onClick={()=>uploadComment()}>등록</button>
       </div>
     </div>
